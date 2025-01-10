@@ -1,7 +1,4 @@
-import {
-  RichTextItemResponse,
-  TimeZoneRequest,
-} from '@notionhq/client/build/src/api-endpoints';
+import { RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
 
 export type NotionData = {
   [key: string]: string;
@@ -17,7 +14,7 @@ export type NotionDataProperty =
       date: {
         start: string;
         end: string | null;
-        time_zone: TimeZoneRequest | null;
+        time_zone: null;
       } | null;
       id: string;
     }
