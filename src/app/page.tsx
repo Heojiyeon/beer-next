@@ -1,3 +1,4 @@
+import BeerList from '@/components/beerList';
 import Logs from '@/components/logs';
 
 export default function Home() {
@@ -5,6 +6,7 @@ export default function Home() {
     <div>
       <main>
         <Logs />
+        <BeerList />
       </main>
       <footer></footer>
     </div>

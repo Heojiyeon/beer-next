@@ -19,8 +19,6 @@ export function mapNotionApi(notionData: QueryDatabaseResponse) {
       createdDate: '',
     };
 
-    console.log(properties);
-
     Object.entries(properties as unknown as NotionDataProperty).forEach(
       property => {
         switch (property[0]) {
