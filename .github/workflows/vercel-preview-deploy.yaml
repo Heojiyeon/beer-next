@@ -1,0 +1,28 @@
+name: Vercel Preview Deployment
+# 배포에 필요한 org id, project id 설정
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+# dev 브랜치에 새로운 히스토리 추가 시 해당 워크플로우 작동
+on:
+  push:
+    branches:
+      - 'dev'
+
+# Ubuntu 가상머신을 통해 하단 프로세스 수행
+jobs:
+  Deploy-Preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts
+        run: vercel build --token=${{secrets.VERCEL_TOKEN}}
+      - name: Assign beta domain
+        run: |
+          vercel deploy --prebuilt --token=$ > domain.txt
+          vercel alias set `cat domain.txt` staging-beer-next.vercel.app --scope $ --token ${{ secrets.VERCEL_TOKEN }}
