@@ -1,45 +1,52 @@
-import { NotionData } from '@/types/notion';
+import { NotionData, NotionDataProperty } from '@/types/notion';
 import {
-  DatePropertyItemObjectResponse,
-  PartialDatabaseObjectResponse,
-  RichTextPropertyItemObjectResponse,
+  PageObjectResponse,
+  QueryDatabaseResponse,
 } from '@notionhq/client/build/src/api-endpoints';
 
-export function mapNotionApi(notionData: PartialDatabaseObjectResponse[]) {
+export function mapNotionApi(notionData: QueryDatabaseResponse) {
   const mappedData: NotionData[] = [];
 
-  notionData.map(rowData => {
+  const { results } = notionData;
+
+  (results as unknown as PageObjectResponse[]).forEach(result => {
+    const { properties } = result;
+
     const handledData: NotionData = {
+      order: '',
       title: '',
       description: '',
       createdDate: '',
     };
 
-    Object.entries(rowData.properties).forEach(property => {
-      const [propertyName, propertyValue] = property;
+    console.log(properties);
 
-      if (propertyName === 'title') {
-        console.log('title propertyValue: ', propertyValue);
-        handledData['title'] = (
-          propertyValue as unknown as RichTextPropertyItemObjectResponse
-        ).rich_text.plain_text;
-      } else if (propertyName === 'description') {
-        console.log('description propertyValue: ', propertyValue);
-        handledData['description'] = (
-          propertyValue as unknown as RichTextPropertyItemObjectResponse
-        ).rich_text.plain_text;
-      } else if (propertyName === 'createdDate') {
-        console.log('createdDate propertyValue: ', propertyValue);
-        handledData['createdDate'] =
-          (propertyValue as unknown as DatePropertyItemObjectResponse).date
-            ?.start ?? '';
+    Object.entries(properties as unknown as NotionDataProperty).forEach(
+      property => {
+        switch (property[0]) {
+          case 'order':
+            handledData.order = property[1].title[0].plain_text;
+            break;
+          case 'title':
+            handledData.title = property[1].rich_text[0].plain_text;
+            break;
+
+          case 'description':
+            handledData.description = property[1].rich_text[0].plain_text;
+            break;
+
+          case 'createdDate':
+            handledData.createdDate = property[1].date.start;
+            break;
+
+          default:
+            break;
+        }
       }
-    });
-
-    console.log('handledData: ', handledData);
+    );
 
     mappedData.push(handledData);
   });
 
-  return mappedData;
+  return mappedData.sort((a, b) => Number(b.order) - Number(a.order));
 }
