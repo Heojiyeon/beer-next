@@ -23,7 +23,7 @@ export default async function Logs() {
     <>
       {logData.map(log => {
         return (
-          <div className="flex">
+          <div key={log.order}>
             {log.title} | {log.description} | {log.createdDate}
           </div>
         );
