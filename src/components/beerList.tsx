@@ -1,4 +1,4 @@
-import { getBeerData } from '@/apis/beer';
+import { getBeerData } from '@/data/beer';
 import { Beer } from '@/types/beer';
 
 /**
