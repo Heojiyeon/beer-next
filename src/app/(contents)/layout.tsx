@@ -1,9 +1,8 @@
 import Header from '@/components/header';
+import Profile from '@/components/profile';
 import '@/styles/globals.css';
-import profile from '@public/profile.png';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'beer-next',
@@ -24,8 +23,14 @@ export default function RootLayout({
     <html lang="ko" className={font.className}>
       <body>
         <Header />
-        <Image src={profile} alt="profile image" width={300} height={300} />
-        {children}
+        <div className="flex justify-around">
+          <div className="w-[20%]">
+            <Profile />
+          </div>
+          <main className="w-[80%] flex justify-center items-center">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );
