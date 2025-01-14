@@ -1,7 +1,9 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    formats: ['image/avif', 'image/webp'], // avif 변환, 해당 형식 지원 안하는 경우 webp 변환
+  },
 };
 
 export default nextConfig;
