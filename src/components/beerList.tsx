@@ -1,5 +1,6 @@
 import { getBeerData } from '@/data/beer';
 import { Beer } from '@/types/beer';
+import Card from './card';
 
 /**
  * @returns SSR + sample API 활용한 beerList 컴포넌트
@@ -10,7 +11,11 @@ export default async function BeerList() {
   return (
     <ol>
       {beerData.map(data => {
-        return <li key={data.id}>{data.name}</li>;
+        return (
+          <li key={data.id}>
+            <Card {...data} />
+          </li>
+        );
       })}
     </ol>
   );
