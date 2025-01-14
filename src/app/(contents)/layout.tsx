@@ -1,7 +1,9 @@
-import type { Metadata } from 'next';
-import '@/styles/globals.css';
 import Header from '@/components/header';
+import '@/styles/globals.css';
+import profile from '@public/profile.png';
+import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'beer-next',
@@ -9,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const font = localFont({
-  src: './fonts/PretendardVariable.ttf',
+  src: '../fonts/PretendardVariable.ttf',
   display: 'swap',
 });
 
@@ -22,6 +24,7 @@ export default function RootLayout({
     <html lang="ko" className={font.className}>
       <body>
         <Header />
+        <Image src={profile} alt="profile image" width={300} height={300} />
         {children}
       </body>
     </html>
