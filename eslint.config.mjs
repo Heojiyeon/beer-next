@@ -17,7 +17,10 @@ const eslintConfig = {
   settings: {
     'import/resolver': {
       alias: {
-        map: [['@', './src']],
+        map: [
+          ['@', './src'],
+          ['@public', './public'],
+        ],
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       },
     },
