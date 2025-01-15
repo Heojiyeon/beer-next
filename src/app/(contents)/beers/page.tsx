@@ -2,10 +2,8 @@ import BeerList from '@/components/beerList';
 
 export default function Beers() {
   return (
-    <div>
-      <main>
-        <BeerList />
-      </main>
-    </div>
+    <main className="w-[70%]">
+      <BeerList />
+    </main>
   );
 }

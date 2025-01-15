@@ -9,14 +9,10 @@ export default async function BeerList() {
   const beerData: Beer[] = await getBeerData();
 
   return (
-    <ol>
-      {beerData.map(data => {
-        return (
-          <li key={data.id}>
-            <Card {...data} />
-          </li>
-        );
-      })}
-    </ol>
+    <div className="grid grid-cols-3 grid-flow-row gap-4">
+      {beerData.map(data => (
+        <Card key={data.id} {...data} />
+      ))}
+    </div>
   );
 }
