@@ -13,9 +13,15 @@ export default {
         foreground: 'var(--foreground)',
         card: {
           defaultBackground: '#F9F9F9',
+          defaultBorder: '#EBEBEB',
           hoverBackground: '#FFFAE4',
           hoverBorder: '#FFD400',
+          description: '#999999',
         },
+      },
+      fontSize: {
+        title: '18px',
+        description: '14px',
       },
     },
   },

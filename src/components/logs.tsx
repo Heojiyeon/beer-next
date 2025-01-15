@@ -3,6 +3,7 @@ import 'server-only';
 import { Client } from '@notionhq/client';
 import { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
 import { mapNotionApi } from '@/lib/mapNotionApi';
+import LogBox from './logBox';
 
 const notion = new Client({ auth: process.env.SECRET_NOTION_KEY });
 const databaseId = process.env.NEXT_PUBLIC_NOTION_PAGE_ID ?? '';
@@ -21,13 +22,9 @@ export default async function Logs() {
 
   return (
     <>
-      {logData.map(log => {
-        return (
-          <div key={log.order}>
-            {log.title} | {log.description} | {log.createdDate}
-          </div>
-        );
-      })}
+      {logData.map(log => (
+        <LogBox key={log.order} {...log} />
+      ))}
     </>
   );
 }
