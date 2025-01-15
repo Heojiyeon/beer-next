@@ -2,6 +2,7 @@
 
 import { Beer } from '@/types/beer';
 import Image from 'next/image';
+import { useState } from 'react';
 
 type CardProps = Beer;
 
@@ -14,6 +15,10 @@ type CardProps = Beer;
 export default function Card({ ...prop }: CardProps) {
   const { image, name, price, rating } = prop;
 
+  const [imageSrc, setImageSrc] = useState(image);
+
+  const handleError = () => setImageSrc('/defaultBeer.jpg');
+
   return (
     <div
       className="max-w-[250px] max-h-[350px] flex flex-col justify-center 
@@ -21,18 +26,18 @@ export default function Card({ ...prop }: CardProps) {
       border border-card-defaultBackground hover:border hover:border-card-hoverBorder"
     >
       <Image
-        src={image}
+        src={imageSrc}
         alt="맥주 이미지"
         width={100}
         height={140}
         className="my-3"
+        onError={handleError}
       />
-
       <div className="flex flex-col justify-center items-center mx-2">
         <p className="font-bold text-center">{name}</p>
         <div className="my-4">
           <p>Price: {price}</p>
-          <p>Average: {rating.average.toFixed(2)}</p>
+          <p>Average: {rating.average ? rating.average.toFixed(2) : 0}</p>
           <p>Reviews: {rating.reviews}</p>
         </div>
       </div>
