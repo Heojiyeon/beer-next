@@ -10,15 +10,22 @@ const API_BASE_URL =
  * @returns 학습 로그 리스트 서버 컴포넌트
  */
 export default async function Logs() {
-  const data = await fetch(`${API_BASE_URL}/api/logs`, {
-    next: { revalidate },
-  });
+  let logData = [];
 
-  if (!data.ok) {
-    throw new Error('Failed to fetch logs');
+  try {
+    const data = await fetch(`${API_BASE_URL}/api/logs`, {
+      next: { revalidate },
+    });
+
+    logData = data.ok ? await data.json() : [];
+  } catch (error) {
+    console.error('Error fetching logs:', error);
+    logData = [];
   }
 
-  const logData = await data.json();
+  if (logData.length === 0) {
+    return <div>로그 데이터가 존재하지 않습니다.</div>;
+  }
 
   return (
     <div>
