@@ -5,7 +5,9 @@ const notion = new Client({ auth: process.env.SECRET_NOTION_KEY });
 const databaseId = process.env.NEXT_PUBLIC_NOTION_PAGE_ID ?? '';
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:3000';
+  process.env.NODE_ENV === 'development'
+    ? 'https://staging-beer-next.vercel.app'
+    : 'http://localhost:3000';
 
 /**
  * @returns Route Handler 생성
@@ -24,6 +26,7 @@ export async function GET() {
     );
 
     response.headers.set('Access-Control-Allow-Origin', API_BASE_URL);
+    response.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
 
     return NextResponse.json(data);
   } catch (error) {
