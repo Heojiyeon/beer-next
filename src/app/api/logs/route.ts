@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '@/components/logs';
 import { Client } from '@notionhq/client';
 import { NextResponse } from 'next/server';
 
@@ -19,6 +20,8 @@ export async function GET() {
       'Cache-Control',
       'public, s-maxage=600, stale-while-revalidate=300'
     );
+
+    response.headers.set('Access-Control-Allow-Origin', API_BASE_URL);
 
     return NextResponse.json(data);
   } catch (error) {
