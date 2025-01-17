@@ -5,7 +5,7 @@ import { log } from 'console';
 const API_BASE_URL =
   process.env.NODE_ENV === 'development'
     ? 'https://staging-beer-next.vercel.app'
-    : 'http://localhost:3000';
+    : 'http://127.0.0.1:8080';
 
 export default async function Logs() {
   const res = await fetch(`${API_BASE_URL}/api/logs`, {
@@ -15,7 +15,6 @@ export default async function Logs() {
   if (!res.ok) {
     return <div>Failed to load logs</div>;
   }
-
   const logs = await res.json();
 
   if (!log) {
