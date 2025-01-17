@@ -5,10 +5,6 @@ import LogBox from './logBox';
 export default async function Logs() {
   const logs = await getLogData();
 
-  if (logs) {
-    console.log('logs:!!!!!!!', logs);
-  }
-
   return (
     <div>
       {logs ? (
