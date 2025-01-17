@@ -1,11 +1,11 @@
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:3000';
+
 export async function getLogData() {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/logs`,
-      {
-        next: { revalidate: 600 },
-      }
-    );
+    const res = await fetch(`${API_BASE_URL}/api/logs`, {
+      next: { revalidate: 600 },
+    });
 
     if (!res.ok) {
       console.error('Failed to load logs');
