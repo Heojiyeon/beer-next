@@ -1,20 +1,21 @@
 import { mapNotionApi } from '@/lib/mapNotionApi';
-import LogBox from './logBox';
 import { log } from 'console';
+import LogBox from './logBox';
+
+export const revalidate = 600;
 
 const API_BASE_URL =
-  process.env.NODE_ENV === 'development'
-    ? 'https://staging-beer-next.vercel.app'
-    : 'http://127.0.0.1:8080';
+  process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000';
 
 export default async function Logs() {
   const res = await fetch(`${API_BASE_URL}/api/logs`, {
-    next: { revalidate: 600 },
+    next: { revalidate },
   });
 
   if (!res.ok) {
-    return <div>Failed to load logs</div>;
+    return <div>로그 데이터 패치에 실패하였습니다.</div>;
   }
+
   const logs = await res.json();
 
   if (!log) {
