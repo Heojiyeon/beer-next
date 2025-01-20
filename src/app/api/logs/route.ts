@@ -13,14 +13,7 @@ export async function GET() {
       database_id: databaseId,
     });
 
-    // 여기서 `revalidate` 옵션을 적용하지 않고, 클라이언트에서 사용
     const response = NextResponse.json(data);
-
-    // 서버에서 `revalidate` 옵션을 적용하려면 캐시 관련 설정을 사용
-    response.headers.set(
-      'Cache-Control',
-      'public, s-maxage=600, stale-while-revalidate=300'
-    );
 
     return response;
   } catch (error) {
