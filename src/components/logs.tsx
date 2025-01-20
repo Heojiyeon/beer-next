@@ -4,15 +4,15 @@ import LogBox from './logBox';
 
 export const revalidate = 600;
 
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000';
-
 export default async function Logs() {
-  const res = await fetch(`${API_BASE_URL}/api/logs`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/logs`, {
     next: { revalidate },
   });
 
-  console.log('fetch url: ', `${API_BASE_URL}/api/logs`);
+  console.log(
+    'fetch url: ',
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/logs`
+  );
   console.log('res: ', res);
 
   const logs = await res.json();

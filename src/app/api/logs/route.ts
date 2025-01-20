@@ -15,16 +15,6 @@ export async function GET(request: Request) {
 
     const response = NextResponse.json(data);
 
-    response.headers.set(
-      'Access-Control-Allow-Methods',
-      'GET, POST, PUT, DELETE'
-    );
-
-    const allowedOrigins = 'https://staging-beer-next.vercel.app';
-
-    response.headers.set('Access-Control-Allow-Origin', allowedOrigins); // 요청된 Origin에 대해 CORS 허용
-    response.headers.set('Access-Control-Allow-Headers', 'Authorization'); // 헤더 추가
-
     return response;
   } catch (error) {
     console.error('Error fetching logs from Notion', error);
