@@ -15,11 +15,15 @@ export default async function Logs() {
   );
   console.log('res: ', res);
 
+  if (!res.ok) {
+    return <div>로그 데이터 패치에 실패하였습니다.</div>;
+  }
+
   const logs = await res.json();
   console.log('logs: ', logs);
 
   if (!log) {
-    return <div>로그 데이터 패치에 실패하였습니다.</div>;
+    return <div>로그 데이터 로드에 실패하였습니다.</div>;
   }
 
   return (
