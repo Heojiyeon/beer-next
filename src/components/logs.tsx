@@ -13,10 +13,7 @@ export default async function Logs() {
   });
 
   console.log('fetch url: ', `${API_BASE_URL}/api/logs`);
-  console.log('res.ok: ', res.ok);
-  if (!res.ok) {
-    return <div>로그 데이터 패치에 실패하였습니다.</div>;
-  }
+  console.log('res: ', res);
 
   const logs = await res.json();
   console.log('logs: ', logs);
