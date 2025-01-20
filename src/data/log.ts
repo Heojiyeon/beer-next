@@ -5,6 +5,9 @@ export async function getLogData() {
   try {
     const res = await fetch(`${API_BASE_URL}/api/logs`, {
       method: 'GET',
+      headers: {
+        Authorization: `Bearer ${process.env.SECRET_NOTION_KEY}`,
+      },
       next: { revalidate: 600 },
     });
 
