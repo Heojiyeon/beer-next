@@ -3,11 +3,36 @@ import { log } from 'console';
 import LogBox from './logBox';
 
 export const revalidate = 600;
+const databaseId = process.env.NEXT_PUBLIC_NOTION_PAGE_ID ?? '';
+const redirectUrl =
+  process.env.NEXT_PUBLIC_API_BASE_URL ?? 'https://localhost:3000';
 
 export default async function Logs() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/logs`, {
-    next: { revalidate },
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/logs`, {
+  //   next: { revalidate },
+  // });
+
+  const raw = JSON.stringify({
+    grant_type: 'authorization_code',
+    code: 'your-temporary-code',
+    redirect_uri: redirectUrl,
   });
+
+  const options = {
+    method: 'POST',
+    headers: {
+      accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.SECRET_NOTION_KEY}`,
+    },
+    body: raw,
+    next: { revalidate: 600 },
+  };
+
+  const res = await fetch(
+    `https://api.notion.com/v1/databases/${databaseId}/query`,
+    options
+  );
 
   console.log(
     'fetch url: ',
