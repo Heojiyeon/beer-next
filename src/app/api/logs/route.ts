@@ -7,13 +7,23 @@ const databaseId = process.env.NEXT_PUBLIC_NOTION_PAGE_ID ?? '';
 /**
  * @returns Route Handler 생성
  */
-export async function GET() {
+export async function GET(request: Request) {
   try {
     const data = await notion.databases.query({
       database_id: databaseId,
     });
 
     const response = NextResponse.json(data);
+
+    response.headers.set(
+      'Access-Control-Allow-Methods',
+      'GET, POST, PUT, DELETE'
+    );
+
+    const allowedOrigins = 'https://staging-beer-next.vercel.app';
+
+    response.headers.set('Access-Control-Allow-Origin', allowedOrigins); // 요청된 Origin에 대해 CORS 허용
+    response.headers.set('Access-Control-Allow-Headers', 'Authorization'); // 헤더 추가
 
     return response;
   } catch (error) {
