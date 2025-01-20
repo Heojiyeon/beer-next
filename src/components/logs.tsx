@@ -9,9 +9,6 @@ const API_BASE_URL =
 
 export default async function Logs() {
   const res = await fetch(`${API_BASE_URL}/api/logs`, {
-    headers: {
-      Authorization: `Bearer ${process.env.SECRET_NOTION_KEY}`,
-    },
     next: { revalidate },
   });
 
