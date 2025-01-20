@@ -8,15 +8,18 @@ const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000';
 
 export default async function Logs() {
+  console.log('fetch url: ', `${API_BASE_URL}/api/logs`);
   const res = await fetch(`${API_BASE_URL}/api/logs`, {
     next: { revalidate },
   });
 
+  console.log('res.ok: ', res.ok);
   if (!res.ok) {
     return <div>로그 데이터 패치에 실패하였습니다.</div>;
   }
 
   const logs = await res.json();
+  console.log('logs: ', logs);
 
   if (!log) {
     return <div>로그 데이터 패치에 실패하였습니다.</div>;
