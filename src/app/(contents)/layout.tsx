@@ -21,13 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={font.className}>
-      <body>
+      <body className="min-h-screen">
         <Header />
-        <div className="flex justify-around">
-          <div className="w-[20%]">
+        <div className=" flex justify-around m-4 py-10">
+          <div className="flex-[0.3] flex justify-center items-start">
             <Profile />
           </div>
-          <main className="w-[80%] flex justify-center items-center">
+          <main className="flex-[0.7] flex justify-center items-center">
             {children}
           </main>
         </div>
