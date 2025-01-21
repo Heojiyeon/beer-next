@@ -43,8 +43,10 @@ export default function Card({ ...prop }: CardProps) {
         <p className="font-bold text-center">{name}</p>
         <div className="my-4">
           <p>Price: {price}</p>
-          <p>Average: {rating.average ? rating.average.toFixed(2) : 0}</p>
-          <p>Reviews: {rating.reviews}</p>
+          <p>
+            Average: {rating && rating.average ? rating.average.toFixed(2) : 0}
+          </p>
+          <p>Reviews: {rating && rating.reviews ? rating.reviews : 0}</p>
         </div>
       </div>
     </div>

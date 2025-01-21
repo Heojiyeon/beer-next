@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
         hostname: 'www.totalwine.com',
         pathname: '/media/sys_master/cmsmedia/**', // 해당 경로를 포함하는 패턴
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.pixabay.com',
+        pathname: '/photo/**', // 해당 경로를 포함하는 패턴
+      },
     ],
   },
 };
