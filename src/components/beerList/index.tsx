@@ -9,7 +9,7 @@ export default async function BeerList() {
   const beerData: Beer[] = await getBeerData();
 
   return (
-    <div className="grid grid-cols-3 grid-flow-row gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 grid-flow-row gap-4">
       {beerData.map(data => (
         <Card key={data.id} {...data} />
       ))}
