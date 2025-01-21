@@ -1,6 +1,6 @@
 import { mapNotionApi } from '@/lib/mapNotionApi';
 import { log } from 'console';
-import LogBox from './logBox';
+import LogBox from '../logBox';
 
 type LogListProps = {
   res: Response;
