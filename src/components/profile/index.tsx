@@ -7,7 +7,7 @@ import Link from 'next/link';
  */
 export default function Profile() {
   return (
-    <div className="md:block hidden">
+    <div className="flex flex-col justify-center items-center">
       {/* 이미지 */}
       <Image
         src={profile}
@@ -23,7 +23,6 @@ export default function Profile() {
           <p>Frontend Developer</p>
         </div>
         {/* 관련 링크 */}
-
         <div className="flex flex-col items-center justify-center">
           <p className="font-bold">More Information</p>
           <p>

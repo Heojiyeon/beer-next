@@ -4,9 +4,7 @@
 export default function Information() {
   return (
     <div className="text-card-description">
-      <p className="text-title md:text-pageHead mb-12 md:mb-10">
-        프로젝트 설명
-      </p>
+      <p className="text-title md:text-pageHead mb-6 md:mb-10">프로젝트 설명</p>
       <div className="text-description md:text-title leading-loose">
         <p>
           Next.js를 학습해보고 싶었어요. (근데 이제 15의 신기술을 찍먹해보는...)
