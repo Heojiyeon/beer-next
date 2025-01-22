@@ -23,11 +23,11 @@ export default function Card({ ...prop }: CardProps) {
 
   return (
     <div
-      className="max-w-[250px] max-h-[350px] flex flex-col justify-center 
+      className="max-w-[250px] min-h-[350px] md:max-h-[350px] flex flex-col justify-center 
       items-center rounded-lg bg-card-defaultBackground hover:bg-card-hoverBackground 
       border border-card-defaultBackground hover:border hover:border-card-hoverBorder"
     >
-      <div className="min-h-[170px] flex justify-center justify-items-center">
+      <div className="min-h-[170px] flex justify-center items-center scale-110 md:scale-100">
         <Image
           src={imageSrc}
           alt="맥주 이미지"
@@ -39,9 +39,11 @@ export default function Card({ ...prop }: CardProps) {
           onError={handleError}
         />
       </div>
-      <div className="flex flex-col justify-center items-center mx-2">
-        <p className="font-bold text-center">{name}</p>
-        <div className="my-4">
+      <div className="w-full flex flex-col justify-center items-center mx-2">
+        <p className="font-bold text-center w-full px-6 truncate xl:whitespace-pre-wrap">
+          {name}
+        </p>
+        <div className="my-4 hidden md:block">
           <p>Price: {price}</p>
           <p>
             Average: {rating && rating.average ? rating.average.toFixed(2) : 0}

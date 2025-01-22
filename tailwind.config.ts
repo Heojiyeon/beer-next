@@ -21,6 +21,7 @@ export default {
       },
       fontSize: {
         pageHead: '24px',
+        pageSubHead: '22px',
         title: '18px',
         description: '14px',
       },
