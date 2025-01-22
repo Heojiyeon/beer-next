@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import NavBar from './navBar';
 
 /**
  * 모바일 사이즈일 경우 노출
@@ -6,16 +6,11 @@ import Link from 'next/link';
  */
 export default function BottomNavBar() {
   return (
-    <ul className="md:hidden fixed bottom-0 w-full bg-white h-[5rem] flex justify-around items-center border rounded-t-3xl shadow-inner">
-      <li className="text-[20px]">
-        <Link href={'/'}>Intro</Link>
-      </li>
-      <li className="text-[20px]">
-        <Link href={'/beers'}>Beers</Link>
-      </li>
-      <li className="text-[20px]">
-        <Link href={'/logs'}>Logs</Link>
-      </li>
-    </ul>
+    <NavBar
+      ulStyle={
+        'md:hidden fixed bottom-0 w-full bg-white h-[5rem] flex justify-around items-center border rounded-t-3xl shadow-inner'
+      }
+      liStyle={'text-[20px]'}
+    />
   );
 }

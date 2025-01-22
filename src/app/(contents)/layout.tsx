@@ -23,7 +23,10 @@ export default function RootLayout({
   return (
     <html lang="ko" className={font.className}>
       <body className="min-h-screen">
-        <Header />
+        <header>
+          <Header />
+        </header>
+
         <div className="flex justify-around md:m-4 py-5 md:py-10">
           <div className="md:block hidden flex-[0.3] justify-center items-start">
             <Profile />
@@ -32,6 +35,7 @@ export default function RootLayout({
             {children}
           </main>
         </div>
+
         <footer>
           <BottomNavBar />
         </footer>
