@@ -23,7 +23,7 @@ export default async function LogList({ res }: LogListProps) {
       {logs.length > 0 ? (
         logs.map(log => <LogBox key={log.id} {...log} />) // 실제 데이터를 사용
       ) : (
-        <div>로그 데이터가 존재하지 않습니다.</div>
+        <div key={'empty'}>로그 데이터가 존재하지 않습니다.</div>
       )}
     </div>
   );
