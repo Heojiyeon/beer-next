@@ -11,7 +11,7 @@ export default async function LogList({ res }: LogListProps) {
     return <div>로그 데이터 패치에 실패하였습니다.</div>;
   }
 
-  const logs = await res.json();
+  const logs = mapNotionApi(await res.json());
   console.log('logs: ', logs);
 
   if (!log) {
@@ -20,10 +20,10 @@ export default async function LogList({ res }: LogListProps) {
 
   return (
     <div>
-      {mapNotionApi(logs).length > 0 ? (
-        mapNotionApi(logs).map(log => <LogBox key={log.id} {...log} />) // 실제 데이터를 사용
+      {logs.length > 0 ? (
+        logs.map(log => <LogBox key={log.id} {...log} />) // 실제 데이터를 사용
       ) : (
-        <div>로그 데이터가 존재하지 않습니다.</div>
+        <div key={'empty'}>로그 데이터가 존재하지 않습니다.</div>
       )}
     </div>
   );
