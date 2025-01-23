@@ -12,10 +12,15 @@
   },
   "dependencies": {
     "@notionhq/client": "^2.2.15",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "jotai": "^2.11.0",
+    "lucide-react": "^0.473.0",
     "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7",
     "web-push": "^3.6.7"
   },
   "devDependencies": {
