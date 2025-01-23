@@ -14,6 +14,7 @@ export default function Profile() {
         alt="profile image"
         width={180}
         height={180}
+        placeholder="blur"
         className="rounded-full place-self-center"
       />
       <div className="lg:text-[1rem] text-[0.8rem] py-10">
