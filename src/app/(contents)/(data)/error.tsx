@@ -18,9 +18,11 @@ export default function Error({
   }, [error]);
 
   return (
-    <ErrorInfo
-      title={'맥주 정보를 불러오는 데 실패하였습니다 :('}
-      onClick={() => reset()}
-    />
+    <div className="flex-1 min-h-[80vh] flex justify-center items-center">
+      <ErrorInfo
+        title={'맥주 정보를 불러오는데 실패하였습니다 :('}
+        onClick={() => reset()}
+      />
+    </div>
   );
 }
