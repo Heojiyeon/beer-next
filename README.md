@@ -1,5 +1,14 @@
 ## Beer-Next
 
+### 📌 참고
+[2025.01.27] 현재 sampleApis(오픈 api)에서  ```Invalid SSL certificate``` 에러가 발생하고 있어 맥주 리스트를 불러오지 못하고 있어요
+
+정상적인 화면인 경우 다음 이미지와 같아요
+<br />
+<img src="https://github.com/user-attachments/assets/3247ca38-8701-4162-8387-0a27b38d84c0"  width="400" height="350" />
+
+*** 
+
 ### 🔎 개발 배경
 - Next.js를 경험 해보고 싶었어요 (근데 이제 욕심이 생겨서 추가되는 것들이 많아진)
 - 하는 김에 **Next.js의 App router, 렌더링 방식 (SSR, ISR), 배포 자동화, PWA**을 목표로 잡았어요
