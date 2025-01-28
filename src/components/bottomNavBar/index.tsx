@@ -1,4 +1,4 @@
-import NavBar from './navBar';
+import NavBar from '../navBar';
 
 /**
  * 모바일 사이즈일 경우 노출
