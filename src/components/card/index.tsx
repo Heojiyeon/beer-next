@@ -2,7 +2,7 @@
 
 import { Beer } from '@/types/beer';
 import Image from 'next/image';
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 
 const DEFAULT_BLUR_DATA_URL =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==';
@@ -20,8 +20,6 @@ export default function Card({ ...prop }: CardProps) {
   const [imageSrc, setImageSrc] = useState(image);
 
   const handleError = () => setImageSrc('/defaultBeer.jpg');
-
-  useEffect(() => console.log('image: ', image), [image]);
 
   return (
     <div
