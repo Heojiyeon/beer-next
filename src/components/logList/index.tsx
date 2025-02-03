@@ -12,7 +12,6 @@ export default async function LogList({ res }: LogListProps) {
   }
 
   const logs = mapNotionApi(await res.json());
-  console.log('logs: ', logs);
 
   if (!log) {
     return <div>로그 데이터 로드에 실패하였습니다.</div>;
