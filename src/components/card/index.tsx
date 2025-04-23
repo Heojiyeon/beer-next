@@ -2,7 +2,6 @@
 
 import { Beer } from '@/types/beer';
 import Image from 'next/image';
-import { useState } from 'react';
 
 const DEFAULT_BLUR_DATA_URL =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==';
@@ -17,9 +16,7 @@ type CardProps = Beer;
 export default function Card({ ...prop }: CardProps) {
   const { image, name, price, rating } = prop;
 
-  const [imageSrc, setImageSrc] = useState(image);
-
-  const handleError = () => setImageSrc('/defaultBeer.jpg');
+  const checkImageSrc = `/api/image-proxy?url=${encodeURIComponent(image)}`;
 
   return (
     <div
@@ -29,14 +26,13 @@ export default function Card({ ...prop }: CardProps) {
     >
       <div className="min-h-[170px] flex justify-center items-center scale-110 md:scale-100">
         <Image
-          src={imageSrc}
+          src={checkImageSrc}
           alt="맥주 이미지"
           width={100}
           height={140}
-          className="object-contain"
+          className="object-contain w-auto"
           placeholder="blur"
           blurDataURL={DEFAULT_BLUR_DATA_URL}
-          onError={handleError}
         />
       </div>
       <div className="w-full flex flex-col justify-center items-center mx-2">

@@ -57,6 +57,11 @@ const nextConfig: NextConfig = {
         hostname: 'cdn.pixabay.com',
         pathname: '/photo/**', // 해당 경로를 포함하는 패턴
       },
+      {
+        protocol: 'https',
+        hostname: 'media.istockphoto.com',
+        pathname: '/id/**', // 해당 경로를 포함하는 패턴
+      },
     ],
   },
 };

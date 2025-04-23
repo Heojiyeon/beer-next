@@ -7,6 +7,7 @@ import Card from '../card';
  */
 export default async function BeerList() {
   const beerData: Beer[] = await getBeerData();
+  const urls = beerData.map((data) => data.image);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 grid-flow-row gap-4">
